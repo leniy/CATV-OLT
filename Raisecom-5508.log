@@ -1,0 +1,51 @@
+﻿hostname test-OLT
+
+fttx
+create onu-svr-template 1 name vlan-auto-set uni-eth-num 4
+exit
+
+config
+create vlan {OLT-VLAN},{EOC-VLAN},{Dianbo-VLAN},{Kuandai-VLAN} active
+interface range 7-18
+switchport mode trunk
+switchport protect
+switchport trunk allowed vlan {EOC-VLAN},{Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport vlan-mapping ingress outer 2000-2999 add-outer {Kuandai-VLAN}
+switchport vlan-mapping ingress outer 1000-1999 add-outer {Dianbo-VLAN}
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+exit
+interface port 3 
+switchport trunk allowed vlan {OLT-VLAN},{EOC-VLAN},{Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport mode trunk
+speed 1000 
+duplex full 
+exit
+interface ip 0
+ip address {OLT-IP} 255.255.255.0 {OLT-VLAN}
+exit
+ip default-gateway {OLT-gateway}
+exit
+
+fttx
+onu-svr-template 1
+uni-eth-num sensitive disable
+native-vlan config-mode offset
+uni ethernet 1-4 vlan mode tagged
+uni ethernet 1,3,4 native vlan 2750
+uni ethernet 2 native vlan 1750
+quit
+interface range olt 1/1-4
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+quit
+interface range olt 2/1-4
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+quit
+interface range olt 3/1-4
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+quit
+exit
+
+write
