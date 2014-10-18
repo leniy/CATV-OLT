@@ -1,0 +1,186 @@
+﻿hostname test-OLT
+
+config
+
+create card slot 1 type ep16
+create card slot 2 type ep16
+create card slot 3 type ep16
+create card slot 4 type ep16
+create card slot 5 type ep16
+create card slot 6 type ep16
+create card slot 7 type ep16
+create card slot 8 type ep16
+create card slot 11 type ep16
+create card slot 12 type ep16
+create card slot 13 type ep16
+create card slot 14 type ep16
+create card slot 15 type ep16
+create card slot 16 type ep16
+create card slot 19 type xp2a
+create vlan {OLT-VLAN},{EOC-VLAN},{Dianbo-VLAN},{Kuandai-VLAN} active
+router id {OLT-IP}
+create onu-svr-template 1 name vlan-auto-set uni-eth-num 4
+
+interface ten-gigabitethernet 19/1
+speed 1000 
+switchport trunk allowed vlan {OLT-VLAN},{EOC-VLAN},{Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport mode trunk
+quit
+
+interface range epon-olt 1/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 2/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 3/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 4/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 5/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 6/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 7/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 8/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 11/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 12/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 13/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 14/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 15/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface range epon-olt 16/1-16
+switchport mode trunk
+vlan-mapping ingress outer from 1000 to 1999 translate outer {Dianbo-VLAN} inner copy-from-outer 
+vlan-mapping ingress outer from 2000 to 2999 translate outer {Kuandai-VLAN} inner copy-from-outer 
+authorization mode none
+onu-svr-template 1 binded-onu-list 1-64
+switchport trunk allowed vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+switchport trunk untagged vlan {Dianbo-VLAN},{Kuandai-VLAN} confirm
+quit
+
+interface ip 0
+ip address {OLT-IP} 255.255.255.0 {OLT-VLAN}
+exit
+
+ip default-gateway {OLT-gateway}
+
+epon-onu svr-template 1
+uni-eth-num sensitive disable
+native-vlan config-mode offset portlist 1-4
+uni ethernet 1-4 vlan mode tagged
+uni ethernet 1,3,4 native vlan 2600
+uni ethernet 2 native vlan 1600
+quit
+
+exit
+
+write startup-config
