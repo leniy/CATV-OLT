@@ -175,7 +175,7 @@ ip default-gateway {OLT-gateway}
 
 epon-onu svr-template 1
 uni-eth-num sensitive disable
-native-vlan config-mode offset portlist 1-4
+uni ethernet 1-4 native vlan step 1
 uni ethernet 1-4 vlan mode tagged
 uni ethernet 1,3,4 native vlan 2600
 uni ethernet 2 native vlan 1600
